@@ -1,0 +1,7 @@
+%macro report(dataset);
+    proc means data=&dataset mean sum;
+        var income loan_amount;
+    run;
+%mend;
+
+%report(credit_data);
