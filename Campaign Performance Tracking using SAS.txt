@@ -1,0 +1,15 @@
+data campaign;
+    input channel $ conversions total;
+    datalines;
+SMS 50 500
+Email 80 400
+;
+run;
+
+data performance;
+    set campaign;
+    conversion_rate = conversions / total;
+run;
+
+proc print data=performance;
+run;

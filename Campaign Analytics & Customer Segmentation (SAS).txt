@@ -1,0 +1,21 @@
+data customers;
+    input id age income spend;
+    datalines;
+1 25 30000 200
+2 45 60000 800
+3 35 50000 400
+4 50 70000 1000
+;
+run;
+
+data segmented;
+    set customers;
+    if income > 60000 then segment = "High Value";
+    else if income > 40000 then segment = "Medium";
+    else segment = "Low";
+run;
+
+/* Segment summary */
+proc freq data=segmented;
+    tables segment;
+run;
